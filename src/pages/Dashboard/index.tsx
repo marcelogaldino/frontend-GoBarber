@@ -6,6 +6,7 @@ import 'react-day-picker/lib/style.css'
 
 import { FiClock, FiPower } from 'react-icons/fi'
 import { parseISO } from 'date-fns/esm'
+import { Link } from 'react-router-dom'
 import {
   Container,
   Header,
@@ -130,7 +131,7 @@ const Dasboard: React.FC = () => {
 
   const nextAppointment = useMemo(() => {
     return appointments.find(appointment =>
-      isAfter(parseISO(appointment.date), new Date(2021, 2, 5, 8, 0, 0)),
+      isAfter(parseISO(appointment.date), new Date()),
     )
   }, [appointments])
 
@@ -144,9 +145,9 @@ const Dasboard: React.FC = () => {
             <img src={user.getAvatarUrl} alt={user.name} />
             <div>
               <span>Bem vindo</span>
-            </div>
-            <div>
-              <strong>{user.name}</strong>
+              <Link to="/profile">
+                <strong>{user.name}</strong>
+              </Link>
             </div>
           </Profile>
 
